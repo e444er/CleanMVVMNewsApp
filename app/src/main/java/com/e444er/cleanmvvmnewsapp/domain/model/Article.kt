@@ -1,6 +1,7 @@
 package com.e444er.cleanmvvmnewsapp.domain.model
 
 import android.os.Parcelable
+import com.e444er.cleanmvvmnewsapp.data.local.entity.ArticleEntity
 import com.e444er.cleanmvvmnewsapp.data.remote.dto.ArticleDto
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
@@ -18,14 +19,14 @@ data class Article(
     val urlToImage: String?
 ) : Parcelable
 
-//fun Article.toArticleEntity() : ArticleEntity = ArticleEntity(
-//    id = id,
-//    author = author,
-//    content = content,
-//    description = description,
-//    publishedAt = publishedAt,
-//    source = source,
-//    title = title,
-//    url = url,
-//    urlToImage = urlToImage
-//)
+fun Article.toArticleEntity() : ArticleEntity = ArticleEntity(
+    id = id,
+    author = author,
+    content = content,
+    description = description,
+    publishedAt = publishedAt,
+    source = source,
+    title = title,
+    url = url,
+    urlToImage = urlToImage
+)

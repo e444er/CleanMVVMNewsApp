@@ -1,6 +1,7 @@
 package com.e444er.cleanmvvmnewsapp.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -23,12 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNav.setupWithNavController(navController)
 
-//        navController.addOnDestinationChangedListener(){ _ ,destination, _ ->
-//            if (destination.id == R.id.articleFragment){
-//                binding.bottomNav.visibility = View.GONE
-//            } else {
-//                binding.bottomNav.visibility = View.VISIBLE
-//            }
-//        }
+        navController.addOnDestinationChangedListener(){ _ ,destination, _ ->
+            if (destination.id == R.id.articleFragment){
+                binding.bottomNav.visibility = View.GONE
+            } else {
+                binding.bottomNav.visibility = View.VISIBLE
+            }
+        }
     }
 }

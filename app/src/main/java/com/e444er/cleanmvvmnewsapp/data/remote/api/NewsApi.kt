@@ -9,7 +9,7 @@ interface NewsApi {
 
     @GET("/v2/top-headlines")
     suspend fun getTopHeadlines(
-        @Query("country") country: String = "us",
+        @Query("country") country: String = "ru",
         @Query("category") category: String = "science",
         @Query("pageSize") pageSize: Int = 30,
         @Query("page") page: Int = 1,
@@ -19,8 +19,10 @@ interface NewsApi {
     @GET("/v2/everything")
     suspend fun searchNews(
         @Query("q") search: String,
+        @Query("language") language: String = "ru",
         @Query("pageSize") pageSize: Int = 30,
         @Query("page") page: Int = 1,
         @Query("apiKey") apiKey: String = API_KEY,
     ): NewsResponseDto
+
 }

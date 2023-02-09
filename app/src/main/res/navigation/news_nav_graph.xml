@@ -9,11 +9,37 @@
         android:id="@+id/searchNewsFragment"
         android:name="com.e444er.cleanmvvmnewsapp.presentation.searchNews.SearchNewsFragment"
         android:label="fragment_search_news"
-        tools:layout="@layout/fragment_search_news" />
+        tools:layout="@layout/fragment_search_news" >
+        <action
+            android:id="@+id/action_searchNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/topNewsFragment"
         android:name="com.e444er.cleanmvvmnewsapp.presentation.topNews.TopNewsFragment"
         android:label="fragment_top_news"
-        tools:layout="@layout/fragment_top_news" />
+        tools:layout="@layout/fragment_top_news" >
+        <action
+            android:id="@+id/action_topNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.e444er.cleanmvvmnewsapp.presentation.article.ArticleFragment"
+        android:label="ArticleFragment"
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="articleargs"
+            app:argType="com.e444er.cleanmvvmnewsapp.domain.model.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.e444er.cleanmvvmnewsapp.presentation.save.SaveFragment"
+        android:label="fragment_save"
+        tools:layout="@layout/fragment_save" >
+        <action
+            android:id="@+id/action_saveFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 </navigation>
