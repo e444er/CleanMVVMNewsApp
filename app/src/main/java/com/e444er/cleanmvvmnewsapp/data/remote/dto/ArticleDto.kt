@@ -11,17 +11,20 @@ data class ArticleDto(
     val title: String,
     val url: String,
     val urlToImage: String
-) {
-    fun toArticle() = Article(
-        author = author,
-        content = content,
-        description = description,
-        publishedAt = publishedAt,
-        source = source.toSource(),
-        title = title,
-        url = url,
-        urlToImage = urlToImage
-    )
+)
+fun List<ArticleDto>.toMovieList(): List<Article> {
+    return map {
+        Article(
+            author = it.author,
+            content = it.content,
+            description = it.description,
+            publishedAt = it.publishedAt,
+            source = it.source.toSource(),
+            title = it.title,
+            url = it.url,
+            urlToImage = it.urlToImage
+        )
+    }
 }
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,6 +23,8 @@ class ArticleFragment : Fragment() {
     private val args: ArticleFragmentArgs by navArgs()
     private val articleViewModel: ArticleViewModel by viewModels()
 
+    private lateinit var articleModel: Article
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,39 +37,49 @@ class ArticleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val article = args.articleargs
+//        setLiked(article)
 
         Glide.with(binding.root).load(article.urlToImage).into(binding.imageView)
         binding.textTitle.text = article.title
         binding.textQ.text = article.description
 
         articleViewModel.articleState.observe(viewLifecycleOwner) {
-            if (it.articleSaved) {
-                binding.imageFavdis.isVisible = true
-                binding.imageFavorite.isVisible = false
-            } else {
-                binding.imageFavdis.isVisible = false
-                binding.imageFavorite.isVisible = true
+            Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.checkLiked.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                articleViewModel.onEvent(ArticleEvent.SaveArticle(article))
+            }else {
+                articleViewModel.onEvent(ArticleEvent.DeleteArticle(article))
             }
         }
 
-        binding.imageFavorite.setOnClickListener {
-            articleViewModel.onEvent(ArticleEvent.SaveArticle(article))
-        }
-        binding.imageFavdis.setOnClickListener {
-            articleViewModel.onEvent(ArticleEvent.DeleteArticle(article))
-        }
-
+//        binding.imageFavorite.setOnClickListener {
+//            if (it.callOnClick()){
+//
+//            }
+//            articleViewModel.onEvent(ArticleEvent.SaveArticle(article))
+////            binding.imageFavdis.setImageResource(R.drawable.saved)
+//            binding.imageFavdis.isVisible = true
+//            binding.imageFavorite.isVisible = false
+//        }
+//        binding.imageFavdis.setOnClickListener {
+//            articleViewModel.onEvent(ArticleEvent.DeleteArticle(article))
+//            binding.imageFavdis.isVisible = false
+//            binding.imageFavorite.isVisible = true
+//        }
     }
 
-    private fun liked(article: Article) {
-        if (article.id == null) {
-            binding.imageFavdis.isVisible = false
-            binding.imageFavorite.isVisible = true
-        } else {
-            binding.imageFavdis.isVisible = true
-            binding.imageFavorite.isVisible = false
-        }
-    }
+//    private fun setLiked(id: Article) {
+//        if (id.id != null) {
+//            binding.imageFavdis.isVisible = true
+//            binding.imageFavorite.isVisible = false
+//        } else {
+//            binding.imageFavdis.isVisible = false
+//            binding.imageFavorite.isVisible = true
+//        }
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

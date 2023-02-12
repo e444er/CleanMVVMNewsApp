@@ -1,5 +1,6 @@
 package com.e444er.cleanmvvmnewsapp.data.remote.api
 
+import com.e444er.cleanmvvmnewsapp.data.remote.dto.ArticleDto
 import com.e444er.cleanmvvmnewsapp.data.remote.dto.NewsResponseDto
 import com.e444er.cleanmvvmnewsapp.data.utils.Constants.Companion.API_KEY
 import retrofit2.http.GET
@@ -24,5 +25,4 @@ interface NewsApi {
         @Query("page") page: Int = 1,
         @Query("apiKey") apiKey: String = API_KEY,
     ): NewsResponseDto
-
 }

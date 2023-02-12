@@ -13,8 +13,8 @@ interface NewsArticleDao {
     @Query("select * from ArticleEntity")
     fun getAllSavedNewsArticles(): Flow<List<ArticleEntity>>
 
-    @Query("select * from ArticleEntity where url is :url and title is :title and publishedAt is :publishedAt")
-    suspend fun findArticle(url: String, title: String, publishedAt: String): ArticleEntity
+//    @Query("select * from ArticleEntity where url is :url and title is :title and publishedAt is :publishedAt")
+//    suspend fun findArticle(url: String, title: String, publishedAt: String): ArticleEntity
 
     @Delete
     suspend fun deleteNewsArticle(article: ArticleEntity)

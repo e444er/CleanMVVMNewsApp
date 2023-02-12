@@ -18,15 +18,3 @@ data class Article(
     val url: String,
     val urlToImage: String?
 ) : Parcelable
-
-fun Article.toArticleEntity() : ArticleEntity = ArticleEntity(
-    id = id,
-    author = author,
-    content = content,
-    description = description,
-    publishedAt = publishedAt,
-    source = source,
-    title = title,
-    url = url,
-    urlToImage = urlToImage
-)

@@ -17,8 +17,8 @@ class GetTopHeadLinesUseCase @Inject constructor(
         emit(Resource.Loading())
 
         try {
-            val articleDTOs = newsRepository.getTopHeadLines().articles
-            emit(Resource.Success(articleDTOs.map{it.toArticle()}))
+            val articleDTOs = newsRepository.getTopHeadLines()
+            emit(Resource.Success(articleDTOs))
         } catch (e: HttpException){
             emit(Resource.Error(errorMessage = e.localizedMessage ?: "Unknown Http Connection Error"))
         } catch (e : IOException) {

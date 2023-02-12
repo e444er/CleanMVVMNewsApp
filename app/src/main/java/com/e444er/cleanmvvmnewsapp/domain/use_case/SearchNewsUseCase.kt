@@ -15,7 +15,7 @@ class SearchNewsUseCase @Inject constructor(
     suspend operator fun invoke(search: String) : Flow<Resource<List<Article>>> = flow {
         emit(Resource.Loading())
         try {
-            val articles = newsRepository.searchNews(search).articles.map { it.toArticle() }
+            val articles = newsRepository.searchNews(search)
             emit(Resource.Success(articles))
         } catch (e: HttpException){
             emit(Resource.Error(errorMessage = e.localizedMessage ?: "Unknown Http Error"))

@@ -30,3 +30,15 @@ data class ArticleEntity(
         urlToImage = urlToImage
     )
 }
+
+fun Article.toArticleEntity() = ArticleEntity(
+    id = id,
+    author = author,
+    content = content,
+    description = description,
+    publishedAt = publishedAt,
+    source = source,
+    title = title,
+    url = url,
+    urlToImage = urlToImage
+)
