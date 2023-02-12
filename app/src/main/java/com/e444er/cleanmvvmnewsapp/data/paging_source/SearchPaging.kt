@@ -9,8 +9,9 @@ import com.e444er.cleanmvvmnewsapp.data.utils.Constants.Companion.API_KEY
 import com.e444er.cleanmvvmnewsapp.domain.model.Article
 import javax.inject.Inject
 
-class NewsPaging @Inject constructor(
-    private val newsApi: NewsApi
+class SearchPaging @Inject constructor(
+    private val newsApi: NewsApi,
+    private val search: String,
 ) : PagingSource<Int, Article>() {
     override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
         return state.anchorPosition
@@ -21,13 +22,14 @@ class NewsPaging @Inject constructor(
         val nextPage = params.key ?: Constants.STARTING_PAGE
 
         return  try {
-            val response = newsApi.getTopHeadlines(
-                country = "ru",
-                category = "science",
+            val response = newsApi.searchNews(
+                search = search,
+                language = "ru",
                 pageSize = 30,
                 page = nextPage,
                 apiKey = API_KEY
             )
+
             LoadResult.Page(
                 data = response.articles.toMovieList(),
                 prevKey = if (nextPage == 1) null else  nextPage - 1,

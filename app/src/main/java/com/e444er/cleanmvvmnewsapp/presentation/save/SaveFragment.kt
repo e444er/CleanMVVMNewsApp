@@ -15,6 +15,7 @@ import com.e444er.cleanmvvmnewsapp.R
 import com.e444er.cleanmvvmnewsapp.databinding.FragmentSaveBinding
 import com.e444er.cleanmvvmnewsapp.domain.model.Article
 import com.e444er.cleanmvvmnewsapp.presentation.common.NewsAdapter
+import com.e444er.cleanmvvmnewsapp.presentation.common.SaveAdapter
 import com.e444er.cleanmvvmnewsapp.presentation.searchNews.SearchNewsFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,7 @@ class SaveFragment : Fragment(R.layout.fragment_save) {
     private val binding
         get() = _binding!!
 
-    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsAdapter: SaveAdapter
     private val savedNewsViewModel: SavedNewsViewModel by viewModels()
     private var deletedArticle: Article? = null
 
@@ -127,7 +128,7 @@ class SaveFragment : Fragment(R.layout.fragment_save) {
     }
 
     private fun setupRecycleView() {
-        newsAdapter = NewsAdapter()
+        newsAdapter = SaveAdapter()
         binding.rvFav.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.e444er.cleanmvvmnewsapp.R
 import com.e444er.cleanmvvmnewsapp.databinding.FragmentSearchNewsBinding
 import com.e444er.cleanmvvmnewsapp.presentation.common.NewsAdapter
+import com.e444er.cleanmvvmnewsapp.presentation.common.SaveAdapter
 import com.e444er.cleanmvvmnewsapp.presentation.topNews.TopNewsFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     private var _binding: FragmentSearchNewsBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var newsAdapter: NewsAdapter
+    lateinit var newsAdapter: SaveAdapter
     private val searchNewsViewModel: SearchNewsViewModel by viewModels()
 
     override fun onCreateView(
@@ -67,6 +68,11 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     private fun setupSearchStateObserver() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                launch {
+//                    searchNewsViewModel.getTopHeadLines(binding.searchSrcText.text.toString()).collectLatest { pagingData ->
+//                        newsAdapter.submitData(pagingData)
+//                    }
+//                }
                 searchNewsViewModel.searchNewsState.collectLatest {
                     if (it.isLoading) {
                         binding.contentProgressBar.visibility = View.VISIBLE
@@ -94,7 +100,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter()
+        newsAdapter = SaveAdapter()
         binding.searchRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter

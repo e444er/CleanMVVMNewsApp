@@ -6,5 +6,7 @@ class Constants {
     companion object{
         const val API_KEY = BuildConfig.API_KEY
         const val BASE_URL = BuildConfig.BASE_URL
+        const val STARTING_PAGE = 1
+        const val ITEMS_PER_PAGE = 30
     }
 }
