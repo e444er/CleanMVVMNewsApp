@@ -3,17 +3,17 @@
 
     <item android:id="@+id/topNewsFragment"
         android:title="@string/breaking_news"
-        android:icon="@drawable/baseline_fiber_new_24"/>
+        android:icon="@drawable/bottom_nav_home_selector"/>
 
     <item android:id="@+id/searchNewsFragment"
         android:title="@string/search_news"
-        android:icon="@drawable/baseline_search_24"/>
+        android:icon="@drawable/bottom_nav_search_selector"/>
 
     <item android:id="@+id/saveFragment"
-        android:title="@string/favorited"
-        android:icon="@drawable/baseline_favorite_24"/>
+        android:icon="@drawable/bottom_nav_favorite_selector"
+        android:title="@string/favorited"/>
 
     <item android:id="@+id/settingsFragment"
-        android:title="@string/settings"
-        android:icon="@drawable/baseline_settings_24"/>
+        android:icon="@drawable/bottom_nav_settings_selector"
+        android:title="@string/settings"/>
 </menu>
