@@ -6,7 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
 
-    fun getTopHeadLines(): Flow<PagingData<Article>>
+    fun getTopHeadLines(
+        language: String,
+    ): Flow<PagingData<Article>>
 
 //    fun searchNews(search: String): Flow<PagingData<Article>>
     suspend fun searchNews(search: String): List<Article>

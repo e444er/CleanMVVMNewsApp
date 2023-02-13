@@ -7,4 +7,13 @@
     <string name="search">Search</string>
     <string name="favorite">Favorite</string>
     <string name="favorited">Favorite</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="languages">Languages</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Turkish</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="language_french">French</string>
+    <string name="language_german">German</string>
+    <string name="language_russian">Russian</string>
+    <string name="settings">Settings</string>
 </resources>

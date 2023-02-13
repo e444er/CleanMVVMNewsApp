@@ -20,14 +20,15 @@ class NewsRepositoryImpl @Inject constructor(
     private val newsApi: NewsApi,
     private val newsArticleDao: NewsArticleDao
 ) : NewsRepository {
-    override fun getTopHeadLines(): Flow<PagingData<Article>> {
+    override fun getTopHeadLines(language: String): Flow<PagingData<Article>> {
         return Pager(
             config = PagingConfig(
                 pageSize = ITEMS_PER_PAGE
             ),
             pagingSourceFactory = {
                 NewsPaging(
-                    newsApi = newsApi
+                    newsApi = newsApi,
+                    language = language,
                 )
             }
         ).flow

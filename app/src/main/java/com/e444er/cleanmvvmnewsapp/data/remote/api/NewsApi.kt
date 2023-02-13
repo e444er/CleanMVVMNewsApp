@@ -13,7 +13,6 @@ interface NewsApi {
     suspend fun getTopHeadlines(
         @Query("country") country: String = "ru",
         @Query("category") category: String = "science",
-        @Query("pageSize") pageSize: Int = 30,
         @Query("page") page: Int = Constants.STARTING_PAGE,
         @Query("apiKey") apiKey: String = API_KEY,
     ): NewsResponseDto
